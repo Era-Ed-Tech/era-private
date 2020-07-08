@@ -29,7 +29,7 @@ app.get('/courses/science',function(req,res) {
 app.get('/courses/alr',function(req,res) {
     res.sendFile(__dirname+"/html/aboutUs.html")
 })
-app.get('/ss',function(req,res) {
+app.get('/courses/ss',function(req,res) {
     res.sendFile(__dirname+"/html/EdTechApptitude.html")
 })
 app.get('/eralogin',function(req,res) {
