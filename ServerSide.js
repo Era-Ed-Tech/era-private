@@ -8,6 +8,7 @@ app.use(bodyParser.urlencoded({
     extended: false
 }))
 app.use(bodyParser.json())
+//////
 
 /***GET Routes */
 app.get('/',function(req,res) {
