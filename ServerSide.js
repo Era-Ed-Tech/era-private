@@ -27,10 +27,10 @@ app.get('/courses/science',function(req,res) {
     res.sendFile(__dirname+"/html/science.html")
 })
 app.get('/courses/alr',function(req,res) {
-    res.sendFile(__dirname+"/html/aboutUs.html")
+    res.sendFile(__dirname+"/html/EdTechApptitude.html")
 })
 app.get('/courses/ss',function(req,res) {
-    res.sendFile(__dirname+"/html/EdTechApptitude.html")
+    res.sendFile(__dirname+"/html/softskills.html")
 })
 app.get('/eralogin',function(req,res) {
     res.sendFile(__dirname+"/html/SignIn.html")
