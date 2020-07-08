@@ -1,0 +1,5 @@
+{
+    "host" :"erardbms-instance-1.cjxm1lyeh9rj.ap-south-1.rds.amazonaws.com", 
+    "user" : "eraroot",
+    "password": "c9NqO4LLQooMtDghUzeB"
+}

@@ -1,0 +1,22 @@
+{
+  "name": "era-edu",
+  "version": "1.0.0",
+  "description": "ERA Server SIDE",
+  "main": "ServerSide.js",
+  "scripts": {
+    "start": "node ServerSide.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "deploy": "aws s3 sync . s3://eraco.in --acl public-read"
+  },
+  "keywords": [
+    "AWS",
+    "thejscode"
+  ],
+  "author": "thejscode (JSGREWAL)",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "mysql": "^2.18.1"
+  }
+}
