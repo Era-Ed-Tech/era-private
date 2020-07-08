@@ -11,7 +11,7 @@ app.use(bodyParser.json())
 
 /*** Routes */
 app.get('/',function(req,res) {
-    res.sendFile(__dirname+"/SignIn.html")
+    res.sendFile(__dirname+"/html/SignIn.html")
 })
 app.post('/registerUser',async function(req,res) {
     var x = [req.body.name,req.body.password,req.body.phone,req.body.email]
