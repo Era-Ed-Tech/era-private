@@ -9,9 +9,33 @@ app.use(bodyParser.urlencoded({
 }))
 app.use(bodyParser.json())
 
-/*** Routes */
+/***GET Routes */
 app.get('/',function(req,res) {
+    res.sendFile(__dirname+"/html/HomePage.html")
+})
+app.get('/aboutEra',function(req,res) {
+    res.sendFile(__dirname+"/html/aboutUs.html")
+})
+app.get('/eraLive',function(req,res) {
+    res.sendFile(__dirname+"/html/liveSessions.html")
+})
+app.get('/courses/maths',function(req,res) {
+    res.sendFile(__dirname+"/html/maths.html")
+})
+app.get('/courses/science',function(req,res) {
+    res.sendFile(__dirname+"/html/science.html")
+})
+app.get('/courses/alr',function(req,res) {
+    res.sendFile(__dirname+"/html/aboutUs.html")
+})
+app.get('/ss',function(req,res) {
+    res.sendFile(__dirname+"/html/EdTechApptitude.html")
+})
+app.get('/eralogin',function(req,res) {
     res.sendFile(__dirname+"/html/SignIn.html")
+})
+app.get('/erasignup',function(req,res) {
+    res.sendFile(__dirname+"/html/signUp.html")
 })
 app.post('/registerUser',async function(req,res) {
     var x = [req.body.name,req.body.password,req.body.phone,req.body.email]
