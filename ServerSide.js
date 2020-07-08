@@ -9,7 +9,7 @@ app.use(bodyParser.urlencoded({
     extended: false
 }))
 app.use(bodyParser.json())
-app.use(favicon(__dirname+"/public/img/ERA 4- TRANSPARENT BG.png"))
+app.use(favicon(__dirname+"/public/img/ERA 4- TRANSPARENT BG - Copy.png"))
 
 /***GET Routes */
 app.get('/',function(req,res) {
