@@ -1,6 +1,7 @@
 var dbConnector = require('./EraDBConnect')
 const express = require('express')
 var bodyParser = require('body-parser')
+var favicon = require('serve-favicon')
  dbConnector.pool()
 const app = express()
 app.use(express.static(__dirname))
@@ -8,7 +9,7 @@ app.use(bodyParser.urlencoded({
     extended: false
 }))
 app.use(bodyParser.json())
-//////
+app.use(favicon(__dirname+"/public/img/ERA 4- TRANSPARENT BG.png"))
 
 /***GET Routes */
 app.get('/',function(req,res) {
