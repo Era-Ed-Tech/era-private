@@ -79,27 +79,19 @@ function generateRandomUserId() :number {
      * The Encryption Function AES 128
      * @author JSGREWAL
      */
-     export function encryptPassword(data:string):string {
-        // const cipher = crypto.createCipher('aes128', password);
-        // var encrypted = cipher.update(data, 'utf8', 'hex');
-        // encrypted += cipher.final('hex');
-        // return encrypted;
-        let algorithm = 'aes-256-gcm'
-        let iv = 'eravect'
-        let cipher = crypto.createCipheriv(algorithm,Buffer.from(password),iv)
-        let encrypted = cipher.update(data)
-        encrypted = Buffer.concat([encrypted,cipher.final()])
-        return encrypted.toString('hex')
+     export function encryptPassword(data) {
+        const cipher = crypto.createCipher('aes128', password);
+        var encrypted = cipher.update(data, 'utf8', 'hex');
+        encrypted += cipher.final('hex');
+        return encrypted;
     }
     /***
      * The Decryption Function AES 128
      * @author JSGREWAL
      */
-   export function decryptPassword(data):string {
-       let algorithm = 'aes-256-gcm'
-       let iv = 'eravect'
-       let decipher = crypto.createDecipheriv(algorithm,Buffer.from(password),iv)
-       let decrypted = decipher.update(data)
-       decrypted = Buffer.concat([decrypted,decipher.final()])
-       return decrypted.toString()
+    export function decryptPassword(data) {
+        const decipher = crypto.createDecipher('aes128', password);
+        var decrypted = decipher.update(data, 'hex', 'utf8');
+        decrypted += decipher.final('utf8');
+        return decrypted;
     }

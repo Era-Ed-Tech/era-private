@@ -130,16 +130,10 @@ function generateRandomUserId() {
      * @author JSGREWAL
      */
 function encryptPassword(data) {
-    // const cipher = crypto.createCipher('aes128', password);
-    // var encrypted = cipher.update(data, 'utf8', 'hex');
-    // encrypted += cipher.final('hex');
-    // return encrypted;
-    var algorithm = 'aes-256-gcm';
-    var iv = 'eravect';
-    var cipher = crypto.createCipheriv(algorithm, Buffer.from(password), iv);
-    var encrypted = cipher.update(data);
-    encrypted = Buffer.concat([encrypted, cipher.final()]);
-    return encrypted.toString('hex');
+    var cipher = crypto.createCipher('aes128', password);
+    var encrypted = cipher.update(data, 'utf8', 'hex');
+    encrypted += cipher.final('hex');
+    return encrypted;
 }
 exports.encryptPassword = encryptPassword;
 /***
@@ -147,11 +141,9 @@ exports.encryptPassword = encryptPassword;
  * @author JSGREWAL
  */
 function decryptPassword(data) {
-    var algorithm = 'aes-256-gcm';
-    var iv = 'eravect';
-    var decipher = crypto.createDecipheriv(algorithm, Buffer.from(password), iv);
-    var decrypted = decipher.update(data);
-    decrypted = Buffer.concat([decrypted, decipher.final()]);
-    return decrypted.toString();
+    var decipher = crypto.createDecipher('aes128', password);
+    var decrypted = decipher.update(data, 'hex', 'utf8');
+    decrypted += decipher.final('utf8');
+    return decrypted;
 }
 exports.decryptPassword = decryptPassword;
