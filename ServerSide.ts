@@ -33,7 +33,7 @@ app.get('/',function(req,res) {
          logged_in_user:req.session.username
      })   
     }
-    res.sendFile(__dirname+"/html/HomePage.html")
+else    res.sendFile(__dirname+"/html/HomePage.html")
 })
 app.get('/aboutEra',function(req,res) {
     res.sendFile(__dirname+"/html/aboutUs.html")
