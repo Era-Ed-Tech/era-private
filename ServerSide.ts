@@ -1,16 +1,17 @@
 import { Response } from "express"
 import {Request} from "express"
 import * as dbConnector from './EraDBConnect'
-
+import * as express from 'express'
 
 // let dbConnector = require('./EraDBCon')
-const express = require('express')
+// const express = require('express')
 var session = require('express-session')
 var bodyParser = require('body-parser')
 var favicon = require('serve-favicon')
  
 const app = express()
 app.use('/',express.static(__dirname))
+app.use('/login',express.static(__dirname))
 app.use(bodyParser.urlencoded({
     extended: false
 }))

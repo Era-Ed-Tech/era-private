@@ -37,13 +37,15 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 exports.__esModule = true;
 var dbConnector = require("./EraDBConnect");
+var express = require("express");
 // let dbConnector = require('./EraDBCon')
-var express = require('express');
+// const express = require('express')
 var session = require('express-session');
 var bodyParser = require('body-parser');
 var favicon = require('serve-favicon');
 var app = express();
 app.use('/', express.static(__dirname));
+app.use('/login', express.static(__dirname));
 app.use(bodyParser.urlencoded({
     extended: false
 }));
