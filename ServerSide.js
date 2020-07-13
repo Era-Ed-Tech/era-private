@@ -69,22 +69,66 @@ app.get('/', function (req, res) {
         res.sendFile(__dirname + "/html/HomePage.html");
 });
 app.get('/aboutEra', function (req, res) {
-    res.sendFile(__dirname + "/html/aboutUs.html");
+    if (req.session.loggedin) {
+        console.log(req.session.username);
+        res.render('aboutUs', {
+            logged_in_user: req.session.username
+        });
+    }
+    else
+        res.sendFile(__dirname + "/html/aboutUs.html");
 });
 app.get('/eraLive', function (req, res) {
-    res.sendFile(__dirname + "/html/liveSessions.html");
+    if (req.session.loggedin) {
+        console.log(req.session.username);
+        res.render('liveSessions', {
+            logged_in_user: req.session.username
+        });
+    }
+    else
+        res.redirect('/eraLogin', 307);
+    // res.sendFile(__dirname+"/html/liveSessions.html")
 });
 app.get('/courses/maths', function (req, res) {
-    res.sendFile(__dirname + "/html/maths.html");
+    if (req.session.loggedin) {
+        console.log(req.session.username);
+        res.render('maths', {
+            logged_in_user: req.session.username
+        });
+    }
+    else
+        res.redirect('/eraLogin', 307);
+    // res.sendFile(__dirname+"/html/maths.html")
 });
 app.get('/courses/science', function (req, res) {
-    res.sendFile(__dirname + "/html/science.html");
+    if (req.session.loggedin) {
+        console.log(req.session.username);
+        res.render('science', {
+            logged_in_user: req.session.username
+        });
+    }
+    else
+        res.redirect('/eraLogin', 307);
 });
 app.get('/courses/alr', function (req, res) {
-    res.sendFile(__dirname + "/html/EdTechApptitude.html");
+    if (req.session.loggedin) {
+        console.log(req.session.username);
+        res.render('alr', {
+            logged_in_user: req.session.username
+        });
+    }
+    else
+        res.redirect('/eraLogin', 307);
 });
 app.get('/courses/ss', function (req, res) {
-    res.sendFile(__dirname + "/html/softskills.html");
+    if (req.session.loggedin) {
+        console.log(req.session.username);
+        res.render('softskills', {
+            logged_in_user: req.session.username
+        });
+    }
+    else
+        res.redirect('/eraLogin', 307);
 });
 app.get('/eralogin', function (req, res) {
     res.sendFile(__dirname + "/html/SignIn.html");
