@@ -10,7 +10,7 @@ var bodyParser = require('body-parser')
 var favicon = require('serve-favicon')
  
 const app = express()
-app.use(express.static(__dirname))
+app.use('/',express.static(__dirname))
 app.use(bodyParser.urlencoded({
     extended: false
 }))

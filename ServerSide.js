@@ -43,7 +43,7 @@ var session = require('express-session');
 var bodyParser = require('body-parser');
 var favicon = require('serve-favicon');
 var app = express();
-app.use(express.static(__dirname));
+app.use('/', express.static(__dirname));
 app.use(bodyParser.urlencoded({
     extended: false
 }));
