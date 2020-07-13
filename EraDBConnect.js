@@ -36,8 +36,10 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 exports.__esModule = true;
-exports.getUserName = exports.signIn = exports.signUpUser = void 0;
+exports.decryptPassword = exports.encryptPassword = exports.getUserName = exports.signIn = exports.signUpUser = void 0;
+var crypto = require("crypto");
 var mysql = require("mysql");
+var password = 'EraKeyByJSGrewal';
 var thePool;
 function createConnection() {
     thePool = mysql.createPool({
@@ -123,3 +125,33 @@ function generateRandomUserId() {
     var random = Math.floor(Math.random() * (+max - +min)) + +min;
     return random;
 }
+/***
+     * The Encryption Function AES 128
+     * @author JSGREWAL
+     */
+function encryptPassword(data) {
+    // const cipher = crypto.createCipher('aes128', password);
+    // var encrypted = cipher.update(data, 'utf8', 'hex');
+    // encrypted += cipher.final('hex');
+    // return encrypted;
+    var algorithm = 'aes-256-gcm';
+    var iv = 'eravect';
+    var cipher = crypto.createCipheriv(algorithm, Buffer.from(password), iv);
+    var encrypted = cipher.update(data);
+    encrypted = Buffer.concat([encrypted, cipher.final()]);
+    return encrypted.toString('hex');
+}
+exports.encryptPassword = encryptPassword;
+/***
+ * The Decryption Function AES 128
+ * @author JSGREWAL
+ */
+function decryptPassword(data) {
+    var algorithm = 'aes-256-gcm';
+    var iv = 'eravect';
+    var decipher = crypto.createDecipheriv(algorithm, Buffer.from(password), iv);
+    var decrypted = decipher.update(data);
+    decrypted = Buffer.concat([decrypted, decipher.final()]);
+    return decrypted.toString();
+}
+exports.decryptPassword = decryptPassword;

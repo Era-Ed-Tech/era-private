@@ -144,13 +144,14 @@ app.get('/erasignout', function (req, res) {
 });
 app.post('/registerUser', function (req, res) {
     return __awaiter(this, void 0, void 0, function () {
-        var x, isUserRegistered;
+        var x, encPass, isUserRegistered;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
                     x = [req.body.name, req.body.password, req.body.phone, req.body.email];
                     console.log(x);
-                    return [4 /*yield*/, dbConnector.signUpUser(req.body.name, req.body.password, req.body.phone, req.body.email)];
+                    encPass = dbConnector.encryptPassword(req.body.password);
+                    return [4 /*yield*/, dbConnector.signUpUser(req.body.name, encPass, req.body.phone, req.body.email)];
                 case 1:
                     isUserRegistered = _a.sent();
                     if (isUserRegistered) {
@@ -165,10 +166,12 @@ app.post('/registerUser', function (req, res) {
 });
 app.post('/login', function (req, res) {
     return __awaiter(this, void 0, void 0, function () {
-        var canUserLogin, logged_in_user, _a;
+        var encPass, canUserLogin, logged_in_user, _a;
         return __generator(this, function (_b) {
             switch (_b.label) {
-                case 0: return [4 /*yield*/, dbConnector.signIn(req.body.email, req.body.password)];
+                case 0:
+                    encPass = dbConnector.encryptPassword(req.body.password);
+                    return [4 /*yield*/, dbConnector.signIn(req.body.email, encPass)];
                 case 1:
                     canUserLogin = _b.sent();
                     logged_in_user = 'NONE';

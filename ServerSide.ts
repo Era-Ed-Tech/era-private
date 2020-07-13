@@ -1,7 +1,7 @@
-import { Response } from "express"
-import {Request} from "express"
+
 import * as dbConnector from './EraDBConnect'
 import * as express from 'express'
+import * as crypto from 'crypto'
 
 // let dbConnector = require('./EraDBCon')
 // const express = require('express')
@@ -97,16 +97,17 @@ app.get('/eralogin',function(req,res) {
 app.get('/erasignup',function(req,res) {
     res.sendFile(__dirname+"/html/signUp.html")
 })
-app.get('/erasignout',function(req:Request,res:Response) {
+app.get('/erasignout',function(req,res) {
     // The Sign Out Logic
     req.session.loggedin = false
     req.session.username = 'NONE'
     res.redirect('/')
 })
-app.post('/registerUser',async function(req:Request,res:Response) {
+app.post('/registerUser',async function(req,res) {
     var x = [req.body.name,req.body.password,req.body.phone,req.body.email]
     console.log(x)
-    var isUserRegistered = await dbConnector.signUpUser(req.body.name,req.body.password,req.body.phone,req.body.email)
+    let encPass = dbConnector.encryptPassword(req.body.password)
+    var isUserRegistered = await dbConnector.signUpUser(req.body.name,encPass,req.body.phone,req.body.email)
     if (isUserRegistered) {
         res.redirect('/eralogin')
     }
@@ -114,8 +115,9 @@ app.post('/registerUser',async function(req:Request,res:Response) {
 
 })
 
-app.post('/login',async function(req:Request,res:Response) {
-  var canUserLogin = await dbConnector.signIn(req.body.email,req.body.password)
+app.post('/login',async function(req,res) {
+    let encPass = dbConnector.encryptPassword(req.body.password)
+  var canUserLogin = await dbConnector.signIn(req.body.email,encPass)
   var logged_in_user = 'NONE'
   if (canUserLogin) {
       req.session.loggedin = true
