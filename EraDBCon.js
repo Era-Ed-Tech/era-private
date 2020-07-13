@@ -36,7 +36,6 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 exports.__esModule = true;
-exports.getUserName = exports.signIn = exports.signUpUser = void 0;
 var mysql = require("mysql");
 var thePool;
 function createConnection() {
@@ -74,7 +73,6 @@ function signUpUser(name, password, phone, email) {
         });
     });
 }
-exports.signUpUser = signUpUser;
 function signIn(email, password) {
     return __awaiter(this, void 0, void 0, function () {
         var pool, theQuery;
@@ -97,7 +95,6 @@ function signIn(email, password) {
         });
     });
 }
-exports.signIn = signIn;
 function getUserName(email) {
     return __awaiter(this, void 0, void 0, function () {
         return __generator(this, function (_a) {
@@ -116,10 +113,15 @@ function getUserName(email) {
         });
     });
 }
-exports.getUserName = getUserName;
 function generateRandomUserId() {
     var min = 0;
     var max = 999999;
     var random = Math.floor(Math.random() * (+max - +min)) + +min;
     return random;
 }
+module.exports = {
+    pool: createConnection,
+    registerUser: signUpUser,
+    validateUser: signIn,
+    getUserName: getUserName
+};
