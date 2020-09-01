@@ -10,8 +10,10 @@ var bodyParser = require('body-parser')
 var favicon = require('serve-favicon')
  
 const app = express()
-app.use('/',express.static(__dirname))
-app.use('/login',express.static(__dirname))
+app.use(express.static(__dirname))
+// app.use('/login',express.static(__dirname))
+// app.use(express.static('public'))
+app.use('/',express.static('views'))
 app.use(bodyParser.urlencoded({
     extended: false
 }))
@@ -27,13 +29,18 @@ app.use(favicon(__dirname+"/public/img/ERA 4- TRANSPARENT BG - Copy.png"))
 
 /***GET Routes */
 app.get('/',function(req,res) {
-    if (req.session.loggedin) {
+    console.log('HEERE')
+    if (req.session.username) {
+        console.log('sending')
         console.log(req.session.username)
      res.render('HomePage',{
          logged_in_user:req.session.username
      })   
     }
-else    res.sendFile(__dirname+"/html/HomePage.html")
+else   {
+    console.log('sending html')
+    res.sendFile(__dirname+"/html/HomePage.html")
+} 
 })
 app.get('/aboutEra',function(req,res) {
     if (req.session.loggedin) {
