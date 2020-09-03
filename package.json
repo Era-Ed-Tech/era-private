@@ -28,5 +28,14 @@
     "morgan": "^1.10.0",
     "mysql": "^2.18.1",
     "serve-favicon": "^2.5.0"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CrashRootA12/era-private.git"
+  },
+  "bugs": {
+    "url": "https://github.com/CrashRootA12/era-private/issues"
+  },
+  "homepage": "https://github.com/CrashRootA12/era-private#readme"
 }

@@ -110,6 +110,10 @@ app.get('/erasignout',function(req,res) {
     req.session.username = 'NONE'
     res.redirect('/')
 })
+app.get('/studymaterial',(req,res)=>{
+res.render('studyMaterial',{},(err,html)=>{if (err) console.error(err);
+else res.send(html)});
+});
 app.post('/registerUser',async function(req,res) {
     var x = [req.body.name,req.body.password,req.body.phone,req.body.email]
     console.log(x)
