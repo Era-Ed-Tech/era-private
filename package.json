@@ -27,6 +27,7 @@
     "http-errors": "^1.8.0",
     "morgan": "^1.10.0",
     "mysql": "^2.18.1",
+    "razorpay": "^2.0.6",
     "serve-favicon": "^2.5.0"
   },
   "devDependencies": {},
