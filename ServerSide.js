@@ -148,6 +148,14 @@ app.get('/erasignout', function (req, res) {
     req.session.username = 'NONE';
     res.redirect('/');
 });
+app.get('/studymaterial', function (req, res) {
+    res.render('studyMaterial', {}, function (err, html) {
+        if (err)
+            console.error(err);
+        else
+            res.send(html);
+    });
+});
 app.post('/registerUser', function (req, res) {
     return __awaiter(this, void 0, void 0, function () {
         var x, encPass, isUserRegistered;
