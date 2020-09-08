@@ -136,6 +136,11 @@ app.get('/courses/ss', function (req, res) {
     else
         res.redirect('/eraLogin', 307);
 });
+
+app.get('/terms',(req,res)=>{
+    res.sendFile(__dirname + "/html/terms.html")
+})
+
 app.get('/eralogin', function (req, res) {
     res.sendFile(__dirname + "/html/SignIn.html");
 });
